@@ -153,7 +153,13 @@ public class LabelSetting : MonoBehaviour {
     {
         string dirPath = Application.persistentDataPath + "/" + FileName.text;
         if (!Directory.Exists(dirPath))
+        {
             Directory.CreateDirectory(dirPath);
+        }
+        if (!Directory.Exists(dirPath + "/content"))
+        {
+            Directory.CreateDirectory(dirPath + "/content");
+        }
 
         string nodePath = Application.persistentDataPath + "/" + FileName.text + "/" + "map.txt";
         string labelPath = Application.persistentDataPath + "/" + FileName.text + "/" + "tag.txt";
@@ -168,7 +174,20 @@ public class LabelSetting : MonoBehaviour {
 
             if(!labelTemp.Value.isNode)
             {
-                labeWriter.WriteLine(labelTemp.Value.labelName + " " + labelTemp.Value.labelLatitude + " " + labelTemp.Value.labelLongitude);
+                labeWriter.WriteLine(labelTemp.Value.labelName + " " + labelTemp.Value.labelLatitude + " " + labelTemp.Value.labelLongitude + " " + labelTemp.Value.labelStars);
+
+                // 將圖片存起來
+                if (labelTemp.Value.labelSprite != null)
+                {
+                    string imagePath = Application.persistentDataPath + "/" + FileName.text + "/content/" + labelTemp.Value.labelName + ".jpg";
+                    Stream imageFile = File.Open(imagePath, FileMode.Create);
+                    BinaryWriter imageWriter = new BinaryWriter(imageFile);
+                    byte[] FileData = labelTemp.Value.labelSprite.texture.EncodeToJPG();
+
+                    imageWriter.Write(FileData);
+                    imageWriter.Close();
+                    imageFile.Close();
+                }
             }
         }
 

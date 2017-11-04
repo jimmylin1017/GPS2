@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/Scene/SetLabel.unity
     guid: 224c641bdceb5994eadcf92005bb87fa
   - enabled: 1
+    path: Assets/Scene/EditLabel.unity
+    guid: 14b1454516b2b854e9da6df2430f9599
+  - enabled: 1
     path: Assets/Scene/GoogleMapChoose.unity
     guid: ae9230a1f3cae694cbc998b933a8e134
   - enabled: 1

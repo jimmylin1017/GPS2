@@ -11,20 +11,28 @@ public class LabelNode
 
     public Sprite labelSprite; // label 背景圖片
     public string labelContent; // label 的詳細資料
+    public int labelStars; // label 的星級
 
-    public bool isNode;
+    // 一開始讀地圖和設定地圖時使用
+    public bool isNode; // 判斷是 tag 或 map
 
+    // SetLabel 中使用
     public Toggle labelToggle; // 指向 Scene 上的 Toggle
+
+    // 給 AR 選擇要顯示的 label
     public bool labelChoose; // True 顯示，False 隱藏
 
     //public char markerLabel; // Google Static Map 用的標籤
 
-    public LabelNode(string labelName, float labelLatitude, float labelLongitude)
+    public LabelNode(string labelName, float labelLatitude, float labelLongitude, int labelStars=0)
     {
         this.labelName = labelName;
         this.labelLatitude = labelLatitude;
         this.labelLongitude = labelLongitude;
-        Calc(labelLatitude, labelLongitude, labelLatitude, labelLongitude);
+        this.labelStars = labelStars;
+
+        // 計算 label 跟人的距離
+        updateDistance();
 
         isNode = false;
         labelSprite = null;
@@ -32,7 +40,7 @@ public class LabelNode
         labelChoose = true;
     }
 
-    public LabelNode(string labelName, float labelLatitude, float labelLongitude, double labelDistance)
+    /*public LabelNode(string labelName, float labelLatitude, float labelLongitude, double labelDistance)
     {
         this.labelName = labelName;
         this.labelLatitude = labelLatitude;
@@ -43,11 +51,16 @@ public class LabelNode
         labelSprite = null;
         labelContent = string.Empty;
         labelChoose = true;
+    }*/
+
+    public void updateDistance()
+    {
+        Calc(labelLatitude, labelLongitude, labelLatitude, labelLongitude);
     }
 
     // calculates distance between two sets of coordinates, taking into account the curvature of the earth.
     // 程式內會修改 labelDistance 的值
-    public void Calc(float lat1, float lon1, float lat2, float lon2)
+    private void Calc(float lat1, float lon1, float lat2, float lon2)
     {
 
         var R = 6378.137; // Radius of earth in KM

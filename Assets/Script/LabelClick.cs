@@ -7,15 +7,6 @@ public class LabelClick : MonoBehaviour {
 
     private Dictionary<string, LabelNode> labelList;
 
-    /*private void Start()
-    {
-        // 取得主要的 labelList
-        labelList = LabelMain.Instance.labelList;
-
-        Text labelContentText = GameObject.Find("LabelContentText").GetComponent<Text>();
-        labelContentText.text = labelList[GetComponent<Image>().name].labelContent;
-    }*/
-
     public void getLabelContent()
     {
         Debug.Log("getLabelContent");

@@ -17,7 +17,7 @@ public class LabelCreate : MonoBehaviour {
     private float vectorDistance; // label 向量計算用的距離
     private float labelLatitude; // label 的緯度
     private float labelLongitude; // label 的經度
-    private double labelDistance; // label 跟人的距離
+    //private double labelDistance; // label 跟人的距離
 
     // label 的 X Y Z 位置
     private float labelPositionX, labelPositionY, labelPositionZ;
@@ -26,6 +26,7 @@ public class LabelCreate : MonoBehaviour {
     private Text labelNameText; // label 底下的 Name
     private Text labelDistanceText; // label 底下的 Distance
     private Image labelImage; // label 底下的 Image
+    private Image labelDistanceFrame; // label 底下的 Frame
     private GameObject labelParent; // LabelCanvas
     private Dictionary<string, LabelNode> labelList;
 
@@ -92,39 +93,41 @@ public class LabelCreate : MonoBehaviour {
                 label.transform.position = new Vector3(labelPositionX, labelPositionY, labelPositionZ);
 
                 // 計算新的 labelDistance
-                Calc(latitude, longitude, labelLatitude, labelLongitude);
+                //Calc(latitude, longitude, labelLatitude, labelLongitude);
 
                 // 更新 labelNode 的 labelDistance
-                labelTemp.Value.labelDistance = labelDistance;
+                //labelTemp.Value.labelDistance = labelDistance;
+                labelTemp.Value.updateDistance();
 
                 // 更新 label 中的 Distance 文字
                 labelDistanceText = label.transform.Find("Distance").GetComponent<Text>();
                 labelDistanceText.text = labelTemp.Value.labelDistance.ToString("00.00");
 
                 // 利用顏色區分距離大小
-                if(labelTemp.Value.labelDistance <= 50)
+                labelDistanceFrame = label.transform.Find("Frame").GetComponent<Image>();
+                if (labelTemp.Value.labelDistance <= 50)
                 {
-                    labelDistanceText.color = Color.red;
+                    labelDistanceFrame.color = Color.red;
                 }
                 else if(labelTemp.Value.labelDistance <= 100)
                 {
-                    labelDistanceText.color = Color.yellow;
+                    labelDistanceFrame.color = Color.yellow;
                 }
                 else if (labelTemp.Value.labelDistance <= 200)
                 {
-                    labelDistanceText.color = Color.green;
+                    labelDistanceFrame.color = Color.green;
                 }
                 else if (labelTemp.Value.labelDistance <= 300)
                 {
-                    labelDistanceText.color = Color.cyan;
+                    labelDistanceFrame.color = Color.cyan;
                 }
                 else if (labelTemp.Value.labelDistance <= 500)
                 {
-                    labelDistanceText.color = Color.blue;
+                    labelDistanceFrame.color = Color.blue;
                 }
                 else
                 {
-                    labelDistanceText.color = Color.black;
+                    labelDistanceFrame.color = Color.black;
                 }
 
                 // 調整 label 顯示時面對使用者的角度
@@ -159,6 +162,15 @@ public class LabelCreate : MonoBehaviour {
                 // label 的 Image
                 labelImage = label.transform.Find("Image").GetComponent<Image>();
                 labelImage.sprite = labelTemp.Value.labelSprite;
+
+                // label 的星級 labelStars，最高 5 顆
+                for(int i=1; i<=5; i++)
+                {
+                    if (i <= labelTemp.Value.labelStars)
+                        label.transform.Find("Star" + i).GetComponent<Image>().enabled = true;
+                    else
+                        label.transform.Find("Star" + i).GetComponent<Image>().enabled = false;
+                }
             }
         }
 
@@ -167,7 +179,7 @@ public class LabelCreate : MonoBehaviour {
 
     //calculates distance between two sets of coordinates, taking into account the curvature of the earth.
     // 程式內會修改 labelDistance 的值
-    public void Calc(float lat1, float lon1, float lat2, float lon2)
+    /*public void Calc(float lat1, float lon1, float lat2, float lon2)
     {
 
         var R = 6378.137; // Radius of earth in KM
@@ -185,5 +197,5 @@ public class LabelCreate : MonoBehaviour {
         //set the target position of the ufo, this is where we lerp to in the update function
         //targetPosition = originalPosition - new Vector3(0, 0, distanceFloat * 12);
         //distance was multiplied by 12 so I didn't have to walk that far to get the UFO to show up closer
-    }
+    }*/
 }

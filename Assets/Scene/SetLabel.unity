@@ -1647,7 +1647,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ef445dc28a871a4684bbb04089adb5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  labelTogglePrefab: {fileID: 1475911286320912, guid: 77a7f39b66f6dfb4bb026ce98a887ee2,
+  labelTogglePrefab: {fileID: 1666848504613896, guid: 77a7f39b66f6dfb4bb026ce98a887ee2,
     type: 2}
   labelToggleParent: {fileID: 450343405}
   labelLatitudeText: {fileID: 863945346}

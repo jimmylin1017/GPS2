@@ -97,9 +97,11 @@
     <Compile Include="Assets\Script\LabelChoose.cs" />
     <Compile Include="Assets\Script\LabelClick.cs" />
     <Compile Include="Assets\Script\LabelCreate.cs" />
+    <Compile Include="Assets\Script\LabelEdit.cs" />
     <Compile Include="Assets\Script\LabelMain.cs" />
     <Compile Include="Assets\Script\LabelNode.cs" />
     <Compile Include="Assets\Script\LabelSetting.cs" />
+    <Compile Include="Assets\Script\LabelToggleClick.cs" />
     <Compile Include="Assets\Script\PhoneCamera.cs" />
     <Compile Include="Assets\Script\TCPConnect.cs" />
     <Compile Include="Assets\Script\UpdateGPSText.cs" />

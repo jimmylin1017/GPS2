@@ -10,14 +10,28 @@ public class LabelMain : MonoBehaviour {
 
     public static LabelMain Instance { set; get; }
 
+    // 最主要的資料集合 labelList
     public Dictionary<string, LabelNode> labelList;
-    public double zoomDistance; // 給 Google Map 判斷 Zoom 大小
+    //public double zoomDistance; // 給 Google Map 判斷 Zoom 大小
 
+    // 選擇地圖檔案用
     public Dropdown fileListDropDown;
     public List<string> fileNameList;
     public string selectFileName;
 
-    public string currentLabelContentName;
+    // Function createLabelList() 所需要的變數
+    private LabelNode label; // 暫存 label
+    public string labelName; // label 的名稱
+    private float labelLatitude; // label 的緯度
+    private float labelLongitude; // label 的經度
+    private double labelDistance; // label 跟人的距離
+    private int labelStars; // label 的星級
+
+    // 給 labelCreate 用
+    public double labelDistanceLimit;
+
+    // 給 labelSetting 用
+    public string selectedToEditLabelDetail;
 
     public void Dropdown_IndexChanged(int index)
     {
@@ -34,16 +48,25 @@ public class LabelMain : MonoBehaviour {
         labelList = new Dictionary<string, LabelNode>();
 
         // 初始化 zoomDistance
-        zoomDistance = 0;
+        //zoomDistance = 0;
 
-        // 初始化 currentLabelContentName
-        currentLabelContentName = string.Empty;
+        // 初始化 labelDistanceLimit
+        labelDistanceLimit = 0.0;
+
+        // 初始化 selectedToEditLabelDetail
+        selectedToEditLabelDetail = string.Empty;
 
         // 預設檔名，防止使用者沒有出入檔名
         selectFileName = "temp";
         string dirPath = Application.persistentDataPath + "/" + selectFileName;
         if (!Directory.Exists(dirPath))
+        {
             Directory.CreateDirectory(dirPath);
+        }
+        if (!Directory.Exists(dirPath + "/content"))
+        {
+            Directory.CreateDirectory(dirPath + "/content");
+        }
 
         // 建立暫存檔
         string nodePath = Application.persistentDataPath + "/" + selectFileName + "/" + "map.txt";
@@ -66,12 +89,6 @@ public class LabelMain : MonoBehaviour {
 
         fileListDropDown.AddOptions(fileNameList);
     }
-
-    private LabelNode label; // 暫存 label
-    public string labelName; // label 的名稱
-    private float labelLatitude; // label 的緯度
-    private float labelLongitude; // label 的經度
-    private double labelDistance; // label 跟人的距離
 
     public void createLabelList()
     {
@@ -98,8 +115,17 @@ public class LabelMain : MonoBehaviour {
             labelLatitude = float.Parse(lineSplite[1], CultureInfo.InvariantCulture.NumberFormat);
             labelLongitude = float.Parse(lineSplite[2], CultureInfo.InvariantCulture.NumberFormat);
 
+            if(lineSplite.Length > 3)
+            {
+                labelStars = int.Parse(lineSplite[3], CultureInfo.InvariantCulture.NumberFormat);
+            }
+            else
+            {
+                labelStars = 0;
+            }
+
             // 建立 label 和 labelToggle
-            label = new LabelNode(labelName, labelLatitude, labelLongitude);
+            label = new LabelNode(labelName, labelLatitude, labelLongitude, labelStars);
 
             // 尋找圖片
             string imgPath = dirPath + "/content/" + labelName + ".jpg";
@@ -188,12 +214,12 @@ public class LabelMain : MonoBehaviour {
         return null;                     // Return null if load failed
     }
 
-    public void findZoomDistance()
+    /*public void findZoomDistance()
     {
         // 判斷 MAX Distance
         if (zoomDistance < label.labelDistance)
         {
             zoomDistance = label.labelDistance;
         }
-    }
+    }*/
 }

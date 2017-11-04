@@ -1299,7 +1299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8eb4174b0f087e94eb57f642042360f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  labelPrefab: {fileID: 1355084064953056, guid: 9800539d2ad68344084bdc3332f0af3a,
+  labelPrefab: {fileID: 1412251000752262, guid: 9800539d2ad68344084bdc3332f0af3a,
     type: 2}
   LabelText: {fileID: 2100183570}
 --- !u!1 &1554544205

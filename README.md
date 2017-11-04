@@ -1,10 +1,22 @@
 # GPS2
 School Project Version 2
 
-#2017/11/04
+2017/11/05
+
+* 新增 LabelStars 推薦星級
+* 新增 EditLabel 的 Scene
+	* 自訂圖片功能 (**完成**)
+	* 編輯 LabelName
+	* 編輯 LabelStars
+* 距離判斷顏色改用 Label 中的 Frame 顏色
+	* 距離判斷方法再討論
+* 新增 labelDistanceLimit 限制最遠顯示的 Label
+	* 還沒寫功能
+* Google Map 的比例需要調整 (**未完成**)
+
+# 2017/11/04
 
 * 將 labelContent 改成用 enabled 顯示或消失
-
 
 # 2017/10/31
 
