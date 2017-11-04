@@ -45,6 +45,12 @@ public class LabelCreate : MonoBehaviour {
         // 取得 LabelCanvas
         labelParent = GameObject.Find("LabelCanvas");
 
+        // 讓 LabelContent 消失
+        Image labelContent = GameObject.Find("LabelContent").GetComponent<Image>();
+        Text labelContentText = GameObject.Find("LabelContentText").GetComponent<Text>();
+        labelContent.enabled = false;
+        labelContentText.enabled = false;
+
         createLabel();
     }
 
@@ -58,9 +64,10 @@ public class LabelCreate : MonoBehaviour {
         // 偵測手機返回鍵
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            GameObject labelContent = GameObject.Find("LabelContent");
-            labelContent.transform.localPosition = new Vector3(labelContent.transform.localPosition.x, -1500, labelContent.transform.localPosition.z);
+            Image labelContent = GameObject.Find("LabelContent").GetComponent<Image>();
             Text labelContentText = GameObject.Find("LabelContentText").GetComponent<Text>();
+            labelContent.enabled = false;
+            labelContentText.enabled = false;
             labelContentText.text = string.Empty;
         }
 

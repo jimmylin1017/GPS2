@@ -1,6 +1,11 @@
 # GPS2
 School Project Version 2
 
+#2017/11/04
+
+* 將 labelContent 改成用 enabled 顯示或消失
+
+
 # 2017/10/31
 
 * 新增 labelDistance 的顯示顏色會根據距離改變

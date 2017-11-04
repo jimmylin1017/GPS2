@@ -9,7 +9,7 @@ public class GoogleStaticMaps : MonoBehaviour {
     List<GoogleMapMarker> markers;
 
     GoogleMapLocation center;
-    string zoom = "18";
+    string zoom = "16";
     string size = "640x640";
     string scale = "2";
     string maptype = "roadmap";

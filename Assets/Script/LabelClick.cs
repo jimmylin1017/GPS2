@@ -22,9 +22,10 @@ public class LabelClick : MonoBehaviour {
         // 取得主要的 labelList
         labelList = LabelMain.Instance.labelList;
 
-        GameObject labelContent = GameObject.Find("LabelContent");
-        labelContent.transform.localPosition = new Vector3(labelContent.transform.localPosition.x, -275, labelContent.transform.localPosition.z);
+        Image labelContent = GameObject.Find("LabelContent").GetComponent<Image>();
         Text labelContentText = GameObject.Find("LabelContentText").GetComponent<Text>();
+        labelContent.enabled = true;
+        labelContentText.enabled = true;
         labelContentText.text = labelList[GetComponent<Image>().name].labelContent;
     }
 }

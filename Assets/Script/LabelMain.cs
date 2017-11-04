@@ -11,6 +11,7 @@ public class LabelMain : MonoBehaviour {
     public static LabelMain Instance { set; get; }
 
     public Dictionary<string, LabelNode> labelList;
+    public double zoomDistance; // 給 Google Map 判斷 Zoom 大小
 
     public Dropdown fileListDropDown;
     public List<string> fileNameList;
@@ -31,6 +32,9 @@ public class LabelMain : MonoBehaviour {
 
         // 建立全域 labelList
         labelList = new Dictionary<string, LabelNode>();
+
+        // 初始化 zoomDistance
+        zoomDistance = 0;
 
         // 初始化 currentLabelContentName
         currentLabelContentName = string.Empty;
@@ -182,5 +186,14 @@ public class LabelMain : MonoBehaviour {
                 return Tex2D;                 // If data = readable -> return texture
         }
         return null;                     // Return null if load failed
+    }
+
+    public void findZoomDistance()
+    {
+        // 判斷 MAX Distance
+        if (zoomDistance < label.labelDistance)
+        {
+            zoomDistance = label.labelDistance;
+        }
     }
 }
