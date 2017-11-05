@@ -1307,7 +1307,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 165303146}
+      - m_Target: {fileID: 0}
         m_MethodName: chooseImage
         m_Mode: 1
         m_Arguments:
@@ -1640,7 +1640,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 165303146}
+      - m_Target: {fileID: 0}
         m_MethodName: saveEditData
         m_Mode: 1
         m_Arguments:

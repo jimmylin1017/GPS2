@@ -1,11 +1,16 @@
 # GPS2
 School Project Version 2
 
-2017/11/05
+# 2017/11/06
+
+* EditLabel 中的自訂圖片功能無法使用
+* 新增 GoogleMap 和 GoogleMapChoose 的地圖可以左右滑動
+
+# 2017/11/05
 
 * 新增 LabelStars 推薦星級
 * 新增 EditLabel 的 Scene
-	* 自訂圖片功能 (**完成**)
+	* 自訂圖片功能 (**未完成**)
 	* 編輯 LabelName
 	* 編輯 LabelStars
 * 距離判斷顏色改用 Label 中的 Frame 顏色

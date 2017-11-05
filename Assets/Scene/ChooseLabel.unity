@@ -605,7 +605,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36b626260ca938847a7083246d5a099e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  labelTogglePrefab: {fileID: 1475911286320912, guid: 77a7f39b66f6dfb4bb026ce98a887ee2,
+  labelTogglePrefab: {fileID: 1666848504613896, guid: 77a7f39b66f6dfb4bb026ce98a887ee2,
     type: 2}
   labelToggleParent: {fileID: 450343405}
 --- !u!124 &1427986821

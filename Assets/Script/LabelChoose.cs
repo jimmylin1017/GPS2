@@ -46,6 +46,9 @@ public class LabelChoose : MonoBehaviour {
                 labelTemp.Value.labelToggle = Instantiate(labelTogglePrefab, labelToggleParent.transform).GetComponent<Toggle>();
                 labelTemp.Value.labelToggle.name = labelTemp.Value.labelName;
 
+                // 取消 Edit Button
+                labelTemp.Value.labelToggle.transform.Find("Button").gameObject.SetActive(false);
+
                 // 調整 labelToggle 的 Y 軸位置
                 labelTemp.Value.labelToggle.transform.localPosition = new Vector2(labelToggleX, labelToggleY);
                 labelToggleY -= labelToggleHeight;

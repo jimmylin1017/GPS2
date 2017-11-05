@@ -1,9 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+
 
 public class LabelEdit : MonoBehaviour {
 
@@ -61,10 +61,14 @@ public class LabelEdit : MonoBehaviour {
 
     public void chooseImage()
     {
-        string imagePath = EditorUtility.OpenFilePanel("Choose Label Image (Only JPG)", "", "jpg");
+        //string imagePath = EditorUtility.OpenFilePanel("Choose Label Image (Only JPG)", "", "jpg");
 
-        if(imagePath != string.Empty)
-            labelImage.sprite = LabelMain.Instance.LoadNewSprite(imagePath);
+        /*OpenFile a = new OpenFile();
+
+        string imagePath = OpenFile.SelectImgae();*/
+        
+        /*if (imagePath != string.Empty)
+            labelImage.sprite = LabelMain.Instance.LoadNewSprite(imagePath);*/
     }
 
     public void saveEditData()
