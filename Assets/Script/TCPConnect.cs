@@ -131,6 +131,11 @@ public class TCPConnect : MonoBehaviour {
         }
     }
 
+    public void uploadMap()
+    {
+
+    }
+
     public void Unzip()
     {
         string zipfilePath = Application.persistentDataPath + "/" + selectMapName + ".zip";
